@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingBottom="8dp"></android.support.v4.view.ViewPager>
+
+    <com.yinglan.alphatabs.AlphaTabsIndicator
+        android:id="@+id/alphaIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/bottom_background_bar"
+        android:orientation="horizontal">
+
+        <com.yinglan.alphatabs.AlphaTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="4dp"
+            app:tabText="首页"
+            app:tabTextSize="10sp"
+            app:tabIconNormal="@drawable/shouyeyi"
+            app:tabIconSelected="@drawable/shouye"
+            app:textColorNormal="@color/bottom_normal_text"
+            app:textColorSelected="@color/otostore" />
+
+        <com.yinglan.alphatabs.AlphaTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="4dp"
+            app:tabText="消息"
+            app:tabTextSize="10sp"
+            app:tabIconNormal="@drawable/xiaoxiyi"
+            app:tabIconSelected="@drawable/xiaoxi"
+            app:textColorNormal="@color/bottom_normal_text"
+            app:textColorSelected="@color/otostore" />
+
+        <com.yinglan.alphatabs.AlphaTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="4dp"
+            app:tabText="服务"
+            app:tabTextSize="10sp"
+            app:tabIconSelected="@drawable/fuwu"
+            app:tabIconNormal="@drawable/fuwuyi"
+            app:textColorNormal="@color/bottom_normal_text"
+            app:textColorSelected="@color/bottom_select_text" />
+
+        <com.yinglan.alphatabs.AlphaTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="4dp"
+            app:tabText="钱包"
+            app:tabTextSize="10sp"
+            app:tabIconSelected="@drawable/qianbao"
+            app:tabIconNormal="@drawable/qianbaoyi"
+            app:textColorNormal="@color/bottom_normal_text"
+            app:textColorSelected="@color/otostore" />
+    </com.yinglan.alphatabs.AlphaTabsIndicator>
+</LinearLayout>

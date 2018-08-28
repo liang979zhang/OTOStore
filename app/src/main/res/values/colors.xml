@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="bar_text_color">#3F51B5</color>
+    <color name="bar_bg_color">#FF4081</color>
+    <color name="titleBarColor">#FF4081</color>
+    <color name="statusBarColor">#1E1E1E</color>
+    <color name="windowBackground">#FEFEFE</color>
+    <color name="themeTextInputLayout_color">#727272</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="bottom_select_text">#FA4961</color>
+    <color name="view_bg">#F5F5F5</color>
+    <color name="bottom_normal_text">#343536</color>
+    <color name="bottom_background_bar">#F6F9FE</color>
+    <color name="red">#FF0101</color>
+    <color name="oto">#fe9a35</color>
+    <color name="interval">#f0f0f0</color>
+
+</resources>

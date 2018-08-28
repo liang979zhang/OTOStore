@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.administrator.otostore">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
+    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission> -->
+    <!-- 访问网络，网络定位需要上网 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
+    <!-- &lt;!&ndash; 用于访问GPS定位 &ndash;&gt; -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
+    <!-- &lt;!&ndash; 获取运营商信息，用于支持提供运营商信息相关的接口 &ndash;&gt; -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
+    <!-- &lt;!&ndash; 用于访问wifi网络信息，wifi信息会用于进行网络定位 &ndash;&gt; -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> -->
+    <!-- &lt;!&ndash; 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 &ndash;&gt; -->
+    <!-- <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> -->
+    <!-- <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" /> -->
+    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
+    <!-- <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> -->
+    <!-- <uses-permission android:name="android.permission.FLASHLIGHT" /> -->
+
+
+    <!-- <uses-feature android:name="android.hardware.camera" /> -->
+    <!-- <uses-feature android:name="android.hardware.camera.autofocus" /> -->
+
+
+    <!-- <uses-permission android:name="android.permission.RECORD_AUDIO" /> -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
+    <!-- <uses-permission android:name="android.permission.WRITE_SETTINGS" /> -->
+    <!-- <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> -->
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/icono2o"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="tencent_qq_appid"
+            android:value="222222" />
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="51f7976b34bf701e53471876b9da2860" />
+
+        <service android:name="com.amap.api.location.APSService" />
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent222222" />
+                <!-- 100380359 100381104 222222 -->
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activity.LoginActivity" />
+        <activity android:name=".Activity.BottomBarActivity" />
+        <activity android:name=".Activity.RegisterActivity" />
+        <activity android:name=".Activity.FillInInformationActivity" />
+        <activity android:name=".Activity.FindYourPasActivity" />
+        <activity android:name=".Activity.ShoptochooseActivity" />
+        <activity android:name=".Activity.TypeSelectionActivity" />
+        <activity android:name=".Activity.StoreManagementActivity" />
+        <activity android:name=".Activity.AddfriendsActivity" />
+        <activity android:name=".Activity.StoreNameActivity" />
+        <activity android:name=".Activity.VarietyActivity" />
+        <activity android:name=".Activity.AddVarietyActivity" />
+        <activity android:name=".Activity.LaunchProductActivity" />
+        <activity android:name=".Activity.ProductControlActivity" />
+        <activity android:name=".Activity.SpecificationManagementActivity" />
+        <activity android:name=".Activity.EditSpecificationManagementActivity" />
+        <activity android:name=".Activity.LotteryActivity" />
+        <activity android:name=".Activity.EditLotteryActivity" />
+        <activity android:name=".Activity.AddFriendActivity" />
+        <activity android:name=".Activity.JiangJuanSelectActivity" />
+        <activity android:name=".Activity.StoreIntroductionActivity" />
+        <activity android:name=".Activity.PersonInfoActivity" />
+        <activity android:name=".Activity.UpdateImageActivity" />
+        <activity android:name=".Activity.UpdateInfoActivity" />
+        <activity android:name=".Activity.NianFeiActivity" />
+        <activity android:name=".Activity.PayNianFeiActivity" />
+        <activity android:name=".Activity.SaoYiSaoActivity" />
+        <activity android:name=".Activity.PeopleNearbyActivity" />
+        <activity android:name=".Activity.FriendsAddShowActivity" />
+        <activity android:name=".Activity.PeiSongActivity" />
+        <activity android:name=".Activity.DaoDianActivity" />
+        <activity android:name=".Activity.CustomerManagerActivity" />
+        <activity android:name=".Activity.StoreMomentShowActivity" />
+        <activity android:name=".Activity.ProductManagerActivity" />
+        <activity android:name=".Activity.MyCustomerActivity" />
+        <activity android:name=".Activity.SettingActivity" />
+        <activity android:name=".Activity.UpdatePersonImageActivity" />
+        <activity android:name=".Activity.AccountAndSafeActivity" />
+        <activity android:name=".Activity.ChangYourPassActivity" />
+        <activity android:name=".Activity.EditRegisterActivity" />
+        <activity android:name=".Activity.SelectHangyeActivity" />
+        <activity android:name=".Activity.SearchPhoneActivity" />
+        <activity android:name=".Activity.FriendsMomentActivity" />
+        <activity android:name=".Activity.AddFriendsMomentActivity" />
+        <activity android:name=".Activity.ZhifuManagerActivity" />
+        <activity android:name=".Activity.ShowBankActivity" />
+        <activity android:name=".Activity.AddBankCardActivity" />
+        <activity android:name=".Activity.BillAccountActivity" />
+        <activity android:name=".Activity.ResetPassActivity" />
+        <activity android:name=".Activity.WalletChangeActivity" />
+        <activity android:name=".Activity.DetailFirstActivity" />
+        <activity android:name=".Activity.DetailSecondActivity" />
+        <activity android:name=".Activity.DetailThirdActivity" />
+        <activity android:name=".Activity.DetailFourthActivity" />
+        <activity android:name=".Activity.RefuseAnApplicationActivity" />
+        <activity android:name=".Activity.MomentImageLaunchActivity" />
+        <activity android:name=".Activity.OrdersTypeActivity" />
+        <activity android:name=".Activity.FaHuoDanActivity" />
+        <activity android:name=".Activity.SelectKuaidiActivity" />
+        <activity android:name=".Activity.NoMessageActivity" />
+        <activity android:name=".Activity.AboutActivity" />
+        <activity android:name=".Activity.UpdateFriendsMomentActivity" />
+        <activity android:name=".Activity.ChangepasswordActivity" />
+        <activity android:name=".Activity.SeeStoreActivity"></activity>
+    </application>
+
+</manifest>

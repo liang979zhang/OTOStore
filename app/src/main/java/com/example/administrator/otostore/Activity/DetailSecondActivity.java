@@ -1,0 +1,180 @@
+package com.example.administrator.otostore.Activity;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.ajguan.library.EasyRefreshLayout;
+import com.apkfuns.logutils.LogUtils;
+import com.example.administrator.otostore.Adapter.DetailFirstAndSecond;
+import com.example.administrator.otostore.Bean.DetailBean;
+import com.example.administrator.otostore.R;
+import com.example.administrator.otostore.RxJavaUtils.RetrofitHttpUtil;
+import com.example.administrator.otostore.Utils.GsonUtil;
+import com.example.administrator.otostore.Utils.SPUtils;
+import com.mchsdk.paysdk.retrofitutils.rxjava.observable.SchedulerTransformer;
+import com.mchsdk.paysdk.retrofitutils.rxjava.observer.BaseObserver;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class DetailSecondActivity extends BaseActivity {
+
+
+    @BindView(R.id.left)
+    ImageView left;
+    @BindView(R.id.year)
+    TextView year;
+    @BindView(R.id.month)
+    TextView month;
+    @BindView(R.id.right)
+    ImageView right;
+    @BindView(R.id.recycler)
+    RecyclerView recycler;
+    @BindView(R.id.easylayout)
+    EasyRefreshLayout easylayout;
+    private Context context;
+    private String yearselft = "";
+    private String monthselft = "";
+    private SimpleDateFormat sdf;
+    private Calendar ca;
+    private Date resultDate;
+    private int add = 1;
+    private int RowsPerPage = 5;
+    private DetailFirstAndSecond firstAndSecond;
+
+    @Override
+    public int getContentViewResId() {
+        context = this;
+        return R.layout.activity_detail_second;
+    }
+
+    @Override
+    public void initView() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recycler.setLayoutManager(linearLayoutManager);
+        recycler.setHasFixedSize(true);
+        firstAndSecond=new DetailFirstAndSecond();
+        recycler.setAdapter(firstAndSecond);
+        ca = Calendar.getInstance();// 得到一个Calendar的实例
+        ca.setTime(new Date());
+
+        sdf = new SimpleDateFormat("yyyy-MM-dd");
+        final String date = sdf.format(new Date());
+        LogUtils.d("日期是：" + date);
+        yearselft = date.substring(0, date.indexOf("-"));
+        monthselft = date.substring(date.indexOf("-") + 1, date.lastIndexOf("-"));
+        year.setText(yearselft);
+        month.setText(monthselft);
+        setfrash(date);
+        setcenterTitle("待结算明细");
+    }
+    private void setfrash(final String date) {
+        final String startdate = date.substring(0, date.lastIndexOf("-")) + "-01";
+
+        easylayout.autoRefresh();
+        easylayout.addEasyEvent(new EasyRefreshLayout.EasyEvent() {
+            @Override
+            public void onLoadMore() {
+                GetUserSettlingDetial(RowsPerPage, add);
+            }
+
+            @Override
+            public void onRefreshing() {
+                add = 1;
+                GetUserSettlingDetial( RowsPerPage, add);
+            }
+        });
+    }
+    @Override
+    public void leftbarclick() {
+        super.leftbarclick();
+        finish();
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
+    @OnClick({R.id.left, R.id.right})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.left:
+                ca.add(Calendar.MONTH, -1);
+                resultDate = ca.getTime();
+                String date = sdf.format(resultDate);
+                firstAndSecond.setNewData(null);
+                setfrash(date);
+                yearselft = date.substring(0, date.indexOf("-"));
+                monthselft = date.substring(date.indexOf("-") + 1, date.lastIndexOf("-"));
+                year.setText(yearselft);
+                month.setText(monthselft);
+                LogUtils.d(sdf.format(resultDate));
+                break;
+            case R.id.right:
+                ca.add(Calendar.MONTH, 1);
+                resultDate = ca.getTime();
+                date = sdf.format(resultDate);
+                firstAndSecond.setNewData(null);
+                setfrash(date);
+                yearselft = date.substring(0, date.indexOf("-"));
+                monthselft = date.substring(date.indexOf("-") + 1, date.lastIndexOf("-"));
+                year.setText(yearselft);
+                month.setText(monthselft);
+                LogUtils.d(sdf.format(resultDate));
+                break;
+        }
+    }
+
+
+    private void GetUserSettlingDetial( int RowsPerPage, int PageNum){
+        RetrofitHttpUtil.getApiService()
+                .GetUserSettlingDetial("", Long.valueOf(SPUtils.getWalletId(context)), RowsPerPage, PageNum)
+                .compose(SchedulerTransformer.<String>transformer())
+                .subscribe(new BaseObserver<String>() {
+                    @Override
+                    protected void onSuccess(String s) {
+                        LogUtils.d(s);
+                        if (!s.equals("")) {
+                            List<DetailBean> beans = GsonUtil.parseJsonArrayWithGson(s, DetailBean.class);
+                            if (add == 1) {
+                                add++;
+                                firstAndSecond.setNewData(beans);
+                                easylayout.refreshComplete();
+                            } else {
+                                add++;
+                                easylayout.closeLoadView();
+                                int postion = firstAndSecond.getData().size();
+                                firstAndSecond.addData(beans);
+                                firstAndSecond.notifyDataSetChanged();
+                                recycler.scrollToPosition(postion);
+                            }
+                        } else {
+                            easylayout.refreshComplete();
+                            easylayout.closeLoadView();
+                            showToast("没有更多数据");
+
+                        }
+                    }
+                });
+    }
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/most_left_bg"
+    android:orientation="vertical">
+    <!--
+      android:textColor="@drawable/left_color_select"
+            android:background="@drawable/left_bg_select"
+    -->
+    <TextView
+        android:id="@+id/classify_left_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+
+        android:gravity="center_horizontal"
+        android:text="美食" />
+</LinearLayout>

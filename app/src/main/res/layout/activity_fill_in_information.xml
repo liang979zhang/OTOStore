@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.administrator.otostore.Activity.FillInInformationActivity">
+
+    <TextView
+        style="@style/login_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="填写基本资料" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/filinformation"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_load_fail_black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/filinformation"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="添加头像" />
+    </RelativeLayout>
+
+    <EditText
+        style="@style/loginedit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请填写您江湖称号" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#E8E8E8" />
+
+    <RadioGroup
+        android:id="@+id/login_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp">
+
+        <RadioButton
+            android:id="@+id/login_man"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:checked="true"
+            android:text="男" />
+
+        <RadioButton
+            android:id="@+id/login_woman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:text="女" />
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#E8E8E8" />
+
+    <EditText
+        android:id="@+id/login_email"
+        style="@style/loginedit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请填写邮箱" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#E8E8E8" />
+
+    <Button
+        android:id="@+id/login_complete"
+        style="@style/loginbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="完成" />
+</LinearLayout>

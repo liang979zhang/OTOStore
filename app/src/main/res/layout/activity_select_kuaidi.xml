@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="com.example.administrator.otostore.Activity.SelectKuaidiActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/first"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/firsta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:button="@null"
+                android:checked="true"
+                android:text="国内  "
+                android:textColor="@drawable/color_radiobutton_font" />
+
+            <RadioButton
+                android:id="@+id/firstb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:button="@null"
+                android:text="国外  "
+                android:textColor="@drawable/color_radiobutton_font" />
+
+            <RadioButton
+                android:id="@+id/firstc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:button="@null"
+                android:text="转运  "
+                android:textColor="@drawable/color_radiobutton_font" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/second"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/seconda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:button="@null"
+                android:checked="true"
+                android:text="是       "
+                android:textColor="@drawable/color_radiobutton_font" />
+
+            <RadioButton
+                android:id="@+id/secondb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:button="@null"
+                android:text="否     "
+                android:textColor="@drawable/color_radiobutton_font" />
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/third"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/thirda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:button="@null"
+                android:checked="true"
+                android:text="支持  "
+                android:textColor="@drawable/color_radiobutton_font" />
+
+            <RadioButton
+                android:id="@+id/thirdb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:button="@null"
+                android:text="不支持"
+                android:textColor="@drawable/color_radiobutton_font" />
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/fourth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/fourtha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:button="@null"
+                android:checked="true"
+                android:text="支持  "
+                android:textColor="@drawable/color_radiobutton_font" />
+
+            <RadioButton
+                android:id="@+id/fourthb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:button="@null"
+                android:text="不支持"
+                android:textColor="@drawable/color_radiobutton_font" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/click"
+            style="@style/loginbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+
+            android:text="确定" />
+
+
+        <com.ajguan.library.EasyRefreshLayout
+            android:id="@+id/easylay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+        </com.ajguan.library.EasyRefreshLayout>
+    </LinearLayout>
+</LinearLayout>
